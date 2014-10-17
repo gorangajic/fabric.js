@@ -10,7 +10,7 @@
     "url": "http://github.com/kangax/fabric.js/raw/master/LICENSE"
   }],
   "scripts": {
-    "build": "node build.js modules=ALL exclude=json,cufon,gestures",
+    "build": "node build.js modules=ALL exclude=json,cufon,gestures,node",
     "test": "node test.js && jshint src"
   },
   "dependencies": {

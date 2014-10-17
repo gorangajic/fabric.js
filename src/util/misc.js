@@ -353,9 +353,7 @@
    * @return {Image} image element
    */
   function createImage() {
-    return fabric.isLikelyNode
-      ? new (require('canvas').Image)()
-      : fabric.document.createElement('img');
+    return fabric.document.createElement('img');
   }
 
   /**

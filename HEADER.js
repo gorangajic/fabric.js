@@ -10,11 +10,6 @@ if (typeof document !== 'undefined' && typeof window !== 'undefined') {
   fabric.document = document;
   fabric.window = window;
 }
-else {
-  // assume we're running under node.js when document/window are not present
-  fabric.document = require("jsdom").jsdom("<!DOCTYPE html><html><head></head><body></body></html>");
-  fabric.window = fabric.document.createWindow();
-}
 
 /**
  * True when in environment that supports touch events
@@ -26,4 +21,4 @@ fabric.isTouchSupported = "ontouchstart" in fabric.document.documentElement;
  * True when in environment that's probably Node.js
  * @type boolean
  */
-fabric.isLikelyNode = typeof Buffer !== 'undefined' && typeof window === 'undefined';
+fabric.isLikelyNode = false;

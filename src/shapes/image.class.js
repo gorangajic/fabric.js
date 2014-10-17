@@ -282,23 +282,12 @@
       replacement.width = imgEl.width;
       replacement.height = imgEl.height;
 
-      if (fabric.isLikelyNode) {
-        // cut off data:image/png;base64, part in the beginning
-        var base64str = canvasEl.toDataURL('image/png').substring(22);
-        replacement.src = new Buffer(base64str, 'base64');
-
-        // onload doesn't fire in some node versions, so we invoke callback manually
+      replacement.onload = function() {
         _this._element = replacement;
         callback && callback();
-      }
-      else {
-        replacement.onload = function() {
-          _this._element = replacement;
-          callback && callback();
-          replacement.onload = canvasEl = imgEl = null;
-        };
-        replacement.src = canvasEl.toDataURL('image/png');
-      }
+        replacement.onload = canvasEl = imgEl = null;
+      };
+      replacement.src = canvasEl.toDataURL('image/png');
 
       return this;
     },
